@@ -1,0 +1,10 @@
+{
+  "Id": "MedkitHotkey",
+  "DisplayName": "Medkit Hotkey",
+  "Author": "Dingo",
+  "Version": "1.0.0",
+  "Requires": [ "0Harmony.dll" ],
+  "Enable": true,
+  "AssemblyName": "MedkitHotkey.dll",
+  "EntryMethod": "MedkitHotkey.Entry.Initialize"
+}
