@@ -8,14 +8,14 @@ namespace MedkitHotkey
 {
 	public static class Entry
 	{
-		public static Config ModConfig;
+		public static KeyCode SelectedHotkey;
 
 		public static void Initialize()
 		{
 			if (ConfigHandler.TryLoadConfig())
 			{
 #if DEBUG
-				Debug.Log($"[MedkitHotkey] :: Current hotkey is '{ModConfig.FirstAidKeyCode}'");
+				Debug.Log($"[MedkitHotkey] :: Current hotkey is '{SelectedHotkey.ToString()}'");
 #endif
 
 				InitializeHarmony();
@@ -48,10 +48,10 @@ namespace MedkitHotkey
 
 		public static void Patch_uGUI_QuickSlots_ListenForMedkit()
 		{
-			if (!IntroVignette.isIntroActive && Player.main.GetCanItemBeUsed() && Input.GetKeyDown(ModConfig.FirstAidHotkey))
+			if (!IntroVignette.isIntroActive && Player.main.GetCanItemBeUsed() && Input.GetKeyDown(SelectedHotkey))
 			{
 #if DEBUG
-				Debug.Log($"[MedkitHotkey] :: Pressed '{ModConfig.FirstAidKeyCode}', looking for medkit.");
+				Debug.Log($"[MedkitHotkey] :: Pressed '{SelectedHotkey.ToString()}', looking for medkit.");
 #endif
 
 				Inventory playerInventory = Inventory.main;

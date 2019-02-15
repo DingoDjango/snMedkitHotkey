@@ -2,9 +2,9 @@
   "Id": "MedkitHotkey",
   "DisplayName": "Medkit Hotkey",
   "Author": "Dingo",
-  "Version": "1.0.0",
-  "Requires": [ "0Harmony.dll" ],
+  "Version": "1.1.0",
   "Enable": true,
+  "Game": "Subnautica",
   "AssemblyName": "MedkitHotkey.dll",
   "EntryMethod": "MedkitHotkey.Entry.Initialize"
 }
