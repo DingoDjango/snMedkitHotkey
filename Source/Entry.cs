@@ -10,6 +10,8 @@ namespace MedkitHotkey
 	{
 		public static KeyCode SelectedHotkey;
 
+		public static bool TextInputOpen;
+
 		public static void Initialize()
 		{
 			if (ConfigHandler.TryLoadConfig())
@@ -39,16 +41,39 @@ namespace MedkitHotkey
 			HarmonyInstance.DEBUG = true;
 #endif
 
-			/* uGUI_QuickSlots.Update checks game state and does all of the necessary null checks.
-			 * This hotkey is only relevant when QuickSlots are relevant, so we check for input in the same method. */
+			// Update player text input mode (for signs, lockers, console, etc.)
+			MethodInfo inputGroupOnSelect = AccessTools.Method(typeof(uGUI_InputGroup), nameof(uGUI_InputGroup.OnSelect));
+			MethodInfo inputGroupOnDeselect = AccessTools.Method(typeof(uGUI_InputGroup), nameof(uGUI_InputGroup.OnDeselect));
+			MethodInfo inputGroupDeselect = AccessTools.Method(typeof(uGUI_InputGroup), nameof(uGUI_InputGroup.Deselect));
+
+			harmony.Patch(inputGroupOnSelect, null, new HarmonyMethod(typeof(Entry), nameof(Patch_uGUI_InputGroup_OnSelect)), null);
+			harmony.Patch(inputGroupOnDeselect, null, new HarmonyMethod(typeof(Entry), nameof(Patch_uGUI_InputGroup_OnDeselect)), null);
+			harmony.Patch(inputGroupDeselect, null, new HarmonyMethod(typeof(Entry), nameof(Patch_uGUI_InputGroup_Deselect)), null);
+
+			// Listen for First Aid Kit hotkey. Injected where QuickSlots are handled for convenience.
 			MethodInfo handleQuickSlotsInput = AccessTools.Method(typeof(uGUI_QuickSlots), "HandleInput");
 
 			harmony.Patch(handleQuickSlotsInput, null, new HarmonyMethod(typeof(Entry), nameof(Patch_uGUI_QuickSlots_ListenForMedkit)), null);
 		}
 
+		public static void Patch_uGUI_InputGroup_OnSelect()
+		{
+			TextInputOpen = true;
+		}
+
+		public static void Patch_uGUI_InputGroup_OnDeselect()
+		{
+			TextInputOpen = false;
+		}
+
+		public static void Patch_uGUI_InputGroup_Deselect()
+		{
+			TextInputOpen = false;
+		}
+
 		public static void Patch_uGUI_QuickSlots_ListenForMedkit()
 		{
-			if (!IntroVignette.isIntroActive && Player.main.GetCanItemBeUsed() && Input.GetKeyDown(SelectedHotkey))
+			if (!TextInputOpen && Input.GetKeyDown(SelectedHotkey) && !IntroVignette.isIntroActive && Player.main.GetCanItemBeUsed())
 			{
 #if DEBUG
 				Debug.Log($"[MedkitHotkey] :: Pressed '{SelectedHotkey.ToString()}', looking for medkit.");
