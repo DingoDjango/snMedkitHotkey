@@ -1,78 +1,65 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using UnityEngine;
 
 namespace MedkitHotkey
 {
-	/* Json serialization from:
+    /* Json serialization from:
 	 * https://docs.unity3d.com/Manual/JSONSerialization.html
 	 * 
 	 * Directory fetching snippet from:
 	 * https://stackoverflow.com/questions/52797/how-do-i-get-the-path-of-the-assembly-the-code-is-in */
 
-	public static class ConfigHandler
-	{
-		private const string SettingsFileName = "settings.json";
+    internal class ConfigHandler
+    {
+        private const string SettingsFileName = "settings.json";
 
-		private static string GetAssemblyDirectory
-		{
-			get
-			{
-				string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-				UriBuilder uri = new UriBuilder(codeBase);
-				string path = Uri.UnescapeDataString(uri.Path);
+        private bool ValidateValues(Config cfg, out KeyCode selectedKey)
+        {
+            selectedKey = KeyCode.None;
 
-				return Path.GetDirectoryName(path);
-			}
-		}
+            foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
+            {
+                if (String.Equals(key.ToString(), cfg.FirstAidHotkey, StringComparison.OrdinalIgnoreCase))
+                {
+                    selectedKey = key;
 
-		private static bool ValidateValues(Config cfg, out KeyCode selectedKey)
-		{
-			selectedKey = KeyCode.None;
+                    break;
+                }
+            }
 
-			foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
-			{
-				if (String.Equals(key.ToString(), cfg.FirstAidHotkey, StringComparison.OrdinalIgnoreCase))
-				{
-					selectedKey = key;
+            if (selectedKey != KeyCode.None)
+            {
+                return true;
+            }
 
-					break;
-				}
-			}
+            return false;
+        }
 
-			if (selectedKey != KeyCode.None)
-			{
-				return true;
-			}
+        internal bool TryLoadConfig()
+        {
+            try
+            {
+                string settingsFilePath = Path.Combine(Entry.GetAssemblyDirectory, SettingsFileName);
+                string settingsAsJson = File.ReadAllText(settingsFilePath);
+                Config configFromJson = JsonUtility.FromJson<Config>(settingsAsJson);
 
-			return false;
-		}
+                if (!this.ValidateValues(configFromJson, out KeyCode validatedKeyCode))
+                {
+                    return false;
+                }
+                
+                HarmonyPatches.FirstAidHotkey = validatedKeyCode;
+            }
 
-		public static bool TryLoadConfig()
-		{
-			try
-			{
-				string settingsFilePath = Path.Combine(GetAssemblyDirectory, SettingsFileName);
-				string settingsAsJson = File.ReadAllText(settingsFilePath);
-				Config configFromJson = JsonUtility.FromJson<Config>(settingsAsJson);
+            catch (Exception ex)
+            {
+                Debug.Log($"[MedkitHotkey] :: {ex.ToString()}");
 
-				if (!ValidateValues(configFromJson, out KeyCode validatedKeyCode))
-				{
-					return false;
-				}
+                return false;
+            }
 
-				Entry.SelectedHotkey = validatedKeyCode;
-			}
-
-			catch (Exception ex)
-			{
-				Debug.Log($"[MedkitHotkey] :: {ex.ToString()}");
-
-				return false;
-			}
-
-			return true;
-		}
-	}
+            return true;
+        }
+    }
 }
