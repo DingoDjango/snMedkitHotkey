@@ -5,10 +5,10 @@ using UnityEngine;
 namespace MedkitHotkey
 {
     /* Json serialization from:
-	 * https://docs.unity3d.com/Manual/JSONSerialization.html
-	 * 
-	 * Directory fetching snippet from:
-	 * https://stackoverflow.com/questions/52797/how-do-i-get-the-path-of-the-assembly-the-code-is-in */
+     * https://docs.unity3d.com/Manual/JSONSerialization.html
+     *
+     * Directory fetching snippet from:
+     * https://stackoverflow.com/questions/52797/how-do-i-get-the-path-of-the-assembly-the-code-is-in */
 
     internal class ConfigHandler
     {
@@ -48,7 +48,7 @@ namespace MedkitHotkey
                 {
                     return false;
                 }
-                
+
                 HarmonyPatches.FirstAidHotkey = validatedKeyCode;
             }
 

@@ -78,7 +78,7 @@ namespace MedkitHotkey
 
             else
             {
-                LoadLanguageData();
+                ReloadLanguage();
 
                 if (languageStrings.TryGetValue(candidate, out translated))
                 {
@@ -101,9 +101,11 @@ namespace MedkitHotkey
             return source;
         }
 
-        internal static void ClearCache()
+        internal static void ReloadLanguage()
         {
             languageStrings.Clear();
+
+            LoadLanguageData();
         }
     }
 }

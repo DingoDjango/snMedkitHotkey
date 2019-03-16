@@ -8,8 +8,6 @@ namespace MedkitHotkey
 {
     public static class HarmonyPatches
     {
-        private const float healthRequiredToUseMedkit = 0.1f; // Survival.Use(GameObject useObj)
-
         public static KeyCode FirstAidHotkey;
 
         public static bool TextInputOpen;
@@ -29,7 +27,7 @@ namespace MedkitHotkey
             TextInputOpen = true;
         }
 
-        private static void Patch_uGUI_QuickSlots_ListenForMedkit_Postfix()
+        private static void Patch_uGUI_QuickSlots_HandleInput_Postfix()
         {
             if (!TextInputOpen && Input.GetKeyDown(FirstAidHotkey) && !IntroVignette.isIntroActive && Player.main.GetCanItemBeUsed())
             {
@@ -55,7 +53,7 @@ namespace MedkitHotkey
 
         private static void Patch_SetCurrentLanguage_Postfix()
         {
-            Translation.ClearCache();
+            Translation.ReloadLanguage();
         }
 
         internal static void InitializeHarmony()
@@ -78,7 +76,7 @@ namespace MedkitHotkey
             harmony.Patch(inputGroupOnSelect, null, new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_uGUI_InputGroup_OnSelect_Postfix)), null);
 
             // Listen for First Aid Kit hotkey. Injected where QuickSlots are handled.
-            harmony.Patch(handleQuickSlotsInput, null, new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_uGUI_QuickSlots_ListenForMedkit_Postfix)), null);
+            harmony.Patch(handleQuickSlotsInput, null, new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_uGUI_QuickSlots_HandleInput_Postfix)), null);
 
             // Reset language cache upon language change
             harmony.Patch(setLanguage, null, new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SetCurrentLanguage_Postfix)), null);
