@@ -53,14 +53,6 @@ namespace MedkitHotkey
             }
         }
 
-        private static void Patch_LiveMixin_AddHealth_Postfix(float __result)
-        {
-            if (__result <= healthRequiredToUseMedkit)
-            {
-                ErrorMessage.AddWarning("HealthFull".Translate());
-            }
-        }
-
         private static void Patch_SetCurrentLanguage_Postfix()
         {
             Translation.ClearCache();
@@ -78,7 +70,6 @@ namespace MedkitHotkey
             MethodInfo inputGroupOnDeselect = AccessTools.Method(typeof(uGUI_InputGroup), nameof(uGUI_InputGroup.OnDeselect));
             MethodInfo inputGroupOnSelect = AccessTools.Method(typeof(uGUI_InputGroup), nameof(uGUI_InputGroup.OnSelect));
             MethodInfo handleQuickSlotsInput = AccessTools.Method(typeof(uGUI_QuickSlots), "HandleInput");
-            MethodInfo restorePlayerHealth = AccessTools.Method(typeof(LiveMixin), nameof(LiveMixin.AddHealth));
             MethodInfo setLanguage = AccessTools.Method(typeof(Language), nameof(Language.SetCurrentLanguage));
 
             // Update player text input mode (for signs, lockers, console, etc.)
@@ -88,9 +79,6 @@ namespace MedkitHotkey
 
             // Listen for First Aid Kit hotkey. Injected where QuickSlots are handled.
             harmony.Patch(handleQuickSlotsInput, null, new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_uGUI_QuickSlots_ListenForMedkit_Postfix)), null);
-
-            // Display a message if no health was restored
-            harmony.Patch(restorePlayerHealth, null, new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_LiveMixin_AddHealth_Postfix)), null);
 
             // Reset language cache upon language change
             harmony.Patch(setLanguage, null, new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SetCurrentLanguage_Postfix)), null);
