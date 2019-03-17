@@ -1,0 +1,7 @@
+D:\Documents\Visual Studio 2017\Projects\MedkitHotkey\QMods\MedkitHotkey\Languages\English.json
+D:\Documents\Visual Studio 2017\Projects\MedkitHotkey\QMods\MedkitHotkey\settings.json
+D:\Documents\Visual Studio 2017\Projects\MedkitHotkey\QMods\MedkitHotkey\mod.json
+D:\Documents\Visual Studio 2017\Projects\MedkitHotkey\QMods\MedkitHotkey\MedkitHotkey.dll
+D:\Documents\Visual Studio 2017\Projects\MedkitHotkey\MedkitHotkey\obj\Release\MedkitHotkey.csproj.CoreCompileInputs.cache
+D:\Documents\Visual Studio 2017\Projects\MedkitHotkey\MedkitHotkey\obj\Release\MedkitHotkey.dll
+d:\Documents\Visual Studio 2017\Projects\MedkitHotkey\QMods\MedkitHotkey\Languages\Russian.json
