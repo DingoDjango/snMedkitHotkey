@@ -37,15 +37,20 @@ Russian translation by [mstislavovich](https://forums.nexusmods.com/index.php?/u
 
 2019-03-17 - v1.2.2  
 - Added Russian translation by mstislavovich  
+
 2019-03-16 - v1.2.1  
 - Small refactor to language loading  
+
 2019-03-16 - v1.2.0  
 - Added a framework for translations  
 - Refactored code  
+
 2019-02-15 - v1.1.2  
 - Added a check for text input (console, signs, lockers etc.) based on [player feedback](https://www.nexusmods.com/subnautica/mods/190?tab=bugs)﻿  
+
 2019-02-15 - v1.1.0  
 - Updated for QMods v2.0.0  
 - Switched directly to Unity KeyCode  
+
 2019-02-03 - v1.0.0  
 - Initial mod release
