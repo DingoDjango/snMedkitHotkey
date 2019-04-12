@@ -33,7 +33,7 @@ If you want to contribute a translation for this mod, please follow these steps:
 #### **Credits:**
 - Powered by [Harmony](https://github.com/pardeike/Harmony)  
 - Made for the [QMods Subnautica Mod System](https://www.nexusmods.com/subnautica/mods/201)﻿  
-- Russian translation by [mstislavovich](https://forums.nexusmods.com/index.php?/user/23416669-mstislavovich/)
+- Russian translation by [mstislavovich](https://forums.nexusmods.com/index.php?/user/23416669-mstislavovich/)  
 
 
 2019-03-17 - v1.2.2  
