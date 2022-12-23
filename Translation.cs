@@ -10,17 +10,11 @@ namespace MedkitHotkey
     internal static class Translation
     {
         private const string LanguagesFolder = "Languages";
+        private const string DefaultLanguage = "English";
 
         private static readonly Dictionary<string, string> languageStrings = new Dictionary<string, string>();
 
-        private static string GetAssemblyDirectory
-        {
-            get
-            {
-                string fullPath = Assembly.GetExecutingAssembly().Location;
-                return Path.GetDirectoryName(fullPath);
-            }
-        }
+        private static string GetAssemblyDirectory => Path.GetDirectoryName(typeof(Translation).Assembly.Location);
 
         // Json streaming code taken from Language.LoadLanguageFile(string)
         private static void LoadLanguageData()
@@ -29,7 +23,7 @@ namespace MedkitHotkey
 
             if (string.IsNullOrEmpty(currentLanguage))
             {
-                currentLanguage = "English";
+                currentLanguage = DefaultLanguage;
             }
 
             string langFolder = Path.Combine(GetAssemblyDirectory, LanguagesFolder);
@@ -37,7 +31,7 @@ namespace MedkitHotkey
 
             if (!File.Exists(langFile))
             {
-                langFile = Path.Combine(langFolder, "English.json");
+                langFile = Path.Combine(langFolder, DefaultLanguage + ".json");
 
                 if (!File.Exists(langFile))
                 {
@@ -57,7 +51,7 @@ namespace MedkitHotkey
                 catch (Exception ex)
                 {
                     Debug.Log(ex.ToString());
-                    Debug.Log($"[MedkitHotkey] :: Failed while loading language json.");
+                    Debug.Log($"{ModPlugin.modName} :: Failed while loading language json.");
 
                     return;
                 }
@@ -96,7 +90,7 @@ namespace MedkitHotkey
                 return translated;
             }
 
-            Debug.Log($"[MedkitHotkey] :: Could not find translated string for `{source}`");
+            Debug.Log($"{ModPlugin.modName} :: Could not find translated string for `{source}`");
 
             return source;
         }
