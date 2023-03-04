@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using QModManager.API.ModLoading;
+using SMLHelper.V2.Handlers;
+using UnityEngine;
 
-namespace MedkitHotkey
+namespace MedkitHotkey_BZ
 {
+    [QModCore]
     public static class HarmonyPatches
     {
+        internal const string modName = "Medkit Hotkey";
+
+        public static SMLConfig Config { get; private set; }
+
         private static bool TextInputOpen;
 
         private static void Patch_GUI_OnDeselect_Postfix()
@@ -22,7 +30,7 @@ namespace MedkitHotkey
         {
             /* Conditionals include those that uGUI_QuickSlots.HandleInput() already accounts for
                Could be optimized by transpiling into HandleInput() at the cost of increased complexity... */
-            if (!TextInputOpen && GameInput.GetKeyDown(ModPlugin.ConfigFirstAidKey.Value.MainKey) && !uGUI.isIntro && !IntroLifepodDirector.IsActive && Player.main.GetCanItemBeUsed())
+            if (!TextInputOpen && GameInput.GetKeyDown(Config.ConfigFirstAidKey) && !uGUI.isIntro && Player.main.GetCanItemBeUsed())
             {
                 Inventory playerInventory = Inventory.main;
 
@@ -45,13 +53,17 @@ namespace MedkitHotkey
             Translation.ReloadLanguage();
         }
 
-        internal static void InitializeHarmony()
+        internal static void LogMessage(string message)
         {
-            Harmony harmony = new Harmony("Dingo.Harmony.MedkitHotkey");
+            Debug.Log($"{modName} :: " + message);
+        }
 
-#if DEBUG
-            Harmony.DEBUG = true;
-#endif
+        [QModPatch]
+        public static void InitializeHarmony()
+        {
+            Config = OptionsPanelHandler.Main.RegisterModOptions<SMLConfig>();
+
+            Harmony harmony = new Harmony("Dingo.Harmony.MedkitHotkeyBZ");
 
             /* Take note of player text input mode to account for signs, lockers, console, etc. */
             // Patch: uGUI_InputGroup.Deselect

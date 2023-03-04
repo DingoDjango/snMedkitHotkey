@@ -15,16 +15,21 @@ namespace MedkitHotkey
 
         private void InitializeConfig()
         {
-            ConfigFirstAidKey = Config.Bind(
+            ConfigFirstAidKey = this.Config.Bind(
                 section: "General",
                 key: "First Aid Kit Hotkey",
                 defaultValue: new KeyboardShortcut(KeyCode.H),
                 description: "Keybinding used to activate a First Aid Kit from inventory, if one is available.");
         }
 
+        internal static void LogMessage(string message)
+        {
+            Debug.Log($"{modName} :: " + message);
+        }
+
         public void Start()
         {
-            InitializeConfig();
+            this.InitializeConfig();
 
             HarmonyPatches.InitializeHarmony();
         }

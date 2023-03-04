@@ -4,6 +4,8 @@
 
 This mod adds a keybinding for First Aid Kits (default key: "H").
 
+**For Below Zero instructions please view the [Nexus mod page]().**
+
 ### **Installation:**
 
 1. Install [BepInEx for Subnautica](https://www.nexusmods.com/subnautica/mods/1108)

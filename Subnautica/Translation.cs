@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using LitJson;
-using UnityEngine;
 
 namespace MedkitHotkey
 {
@@ -35,7 +33,7 @@ namespace MedkitHotkey
 
                 if (!File.Exists(langFile))
                 {
-                    throw new Exception("[MedkitHotkey] :: Could not find language file.");
+                    throw new Exception($"{ModPlugin.modName} :: Could not find language file.");
                 }
             }
 
@@ -50,8 +48,8 @@ namespace MedkitHotkey
 
                 catch (Exception ex)
                 {
-                    Debug.Log(ex.ToString());
-                    Debug.Log($"{ModPlugin.modName} :: Failed while loading language json.");
+                    ModPlugin.LogMessage(ex.ToString());
+                    ModPlugin.LogMessage("Failed while loading language json.");
 
                     return;
                 }
@@ -90,9 +88,30 @@ namespace MedkitHotkey
                 return translated;
             }
 
-            Debug.Log($"{ModPlugin.modName} :: Could not find translated string for `{source}`");
+            ModPlugin.LogMessage($"Could not find translated string for `{source}`");
 
             return source;
+        }
+
+        internal static string FormatTranslate(this string source, string arg0)
+        {
+            string basic = source.Translate();
+
+            if (!string.IsNullOrEmpty(arg0))
+            {
+                try
+                {
+                    return string.Format(basic, arg0);
+                }
+
+                catch (Exception ex)
+                {
+                    ModPlugin.LogMessage(ex.ToString());
+                    ModPlugin.LogMessage($"Failed to format '{source}' with arg0 `{arg0}'");
+                }
+            }
+
+            return basic;
         }
 
         internal static void ReloadLanguage()

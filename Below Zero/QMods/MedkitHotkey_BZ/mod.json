@@ -1,0 +1,10 @@
+﻿{
+  "Id": "MedkitHotkey_BZ",
+  "DisplayName": "Medkit Hotkey Below Zero",
+  "Author": "Dingo",
+  "Version": "1.0.0",
+  "Enable": true,
+  "Game": "BelowZero",
+  "VersionChecker": { "LatestVersionURL": "https://raw.githubusercontent.com/DingoDjango/snMedkitHotkey/master/Below%20Zero/mod.json" },
+  "AssemblyName": "MedkitHotkey_BZ.dll"
+}
