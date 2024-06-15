@@ -1,37 +1,37 @@
-﻿//using BepInEx;
-//using BepInEx.Configuration;
-//using UnityEngine;
+﻿using BepInEx;
+using BepInEx.Configuration;
+using UnityEngine;
 
-//namespace MedkitHotkey_BZ
-//{
-//    [BepInPlugin(modGUID, modName, modVersion)]
-//    public class ModPlugin : BaseUnityPlugin
-//    {
-//        private const string modGUID = "Dingo.SN.MedkitHotkey";
-//        internal const string modName = "Medkit Hotkey";
-//        private const string modVersion = "2.0.0";
+namespace MedkitHotkey
+{
+    [BepInPlugin(modGUID, modName, modVersion)]
+    public class ModPlugin : BaseUnityPlugin
+    {
+        private const string modGUID = "Dingo.SNBZ.MedkitHotkey";
+        internal const string modName = "Medkit Hotkey BZ";
+        private const string modVersion = "2.1.0";
 
-//        public static ConfigEntry<KeyboardShortcut> ConfigFirstAidKey;
+        public static ConfigEntry<KeyCode> ConfigFirstAidKey;
 
-//        private void InitializeConfig()
-//        {
-//            ConfigFirstAidKey = this.Config.Bind(
-//                section: "General",
-//                key: "First Aid Kit Hotkey",
-//                defaultValue: new KeyboardShortcut(KeyCode.H),
-//                description: "Keybinding used to activate a First Aid Kit from inventory, if one is available.");
-//        }
+        private void InitializeConfig()
+        {
+            ConfigFirstAidKey = this.Config.Bind(
+                section: "General",
+                key: "First Aid Kit Hotkey",
+                defaultValue: KeyCode.H,
+                description: "Keybinding used to activate a First Aid Kit from inventory, if one is available.");
+        }
 
-//        internal static void LogMessage(string message)
-//        {
-//            Debug.Log($"{modName} :: " + message);
-//        }
+        internal static void LogMessage(string message)
+        {
+            Debug.Log($"{modName} :: " + message);
+        }
 
-//        public void Start()
-//        {
-//            this.InitializeConfig();
+        public void Start()
+        {
+            this.InitializeConfig();
 
-//            HarmonyPatches.InitializeHarmony();
-//        }
-//    }
-//}
+            HarmonyPatches.InitializeHarmony();
+        }
+    }
+}

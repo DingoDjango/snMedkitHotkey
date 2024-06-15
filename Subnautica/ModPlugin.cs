@@ -9,16 +9,16 @@ namespace MedkitHotkey
     {
         private const string modGUID = "Dingo.SN.MedkitHotkey";
         internal const string modName = "Medkit Hotkey";
-        private const string modVersion = "2.0.0";
+        private const string modVersion = "2.1.0";
 
-        public static ConfigEntry<KeyboardShortcut> ConfigFirstAidKey;
+        public static ConfigEntry<KeyCode> ConfigFirstAidKey;
 
         private void InitializeConfig()
         {
             ConfigFirstAidKey = this.Config.Bind(
                 section: "General",
                 key: "First Aid Kit Hotkey",
-                defaultValue: new KeyboardShortcut(KeyCode.H),
+                defaultValue: KeyCode.H,
                 description: "Keybinding used to activate a First Aid Kit from inventory, if one is available.");
         }
 
