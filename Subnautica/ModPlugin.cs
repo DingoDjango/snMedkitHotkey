@@ -1,19 +1,24 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using Nautilus.Handlers;
+using Nautilus.Options;
 using UnityEngine;
 
 namespace MedkitHotkey
 {
     [BepInPlugin(modGUID, modName, modVersion)]
-    public class ModPlugin : BaseUnityPlugin
+	[BepInDependency("com.snmodding.nautilus")]
+	public class ModPlugin : BaseUnityPlugin
     {
         private const string modGUID = "Dingo.SN.MedkitHotkey";
         internal const string modName = "Medkit Hotkey";
-        private const string modVersion = "2.1.0";
+        private const string modVersion = "2.2.0";
 
-        public static ConfigEntry<KeyCode> ConfigFirstAidKey;
+     //   private ModOptions modSettings;
 
-        private void InitializeConfig()
+		public static ConfigEntry<KeyCode> ConfigFirstAidKey;
+
+		private void InitializeConfig()
         {
             ConfigFirstAidKey = this.Config.Bind(
                 section: "General",
@@ -27,11 +32,15 @@ namespace MedkitHotkey
             Debug.Log($"{modName} :: " + message);
         }
 
-        public void Start()
+        private void Awake()
         {
-            this.InitializeConfig();
+            LanguageHandler.RegisterLocalizationFolder();
 
-            HarmonyPatches.InitializeHarmony();
+			this.InitializeConfig();
+
+     //       this.modSettings = new ModSettings();
+
+			HarmonyPatches.InitializeHarmony();
         }
     }
 }

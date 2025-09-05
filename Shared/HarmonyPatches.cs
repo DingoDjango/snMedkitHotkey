@@ -2,6 +2,7 @@
 using System.Linq;
 using HarmonyLib;
 using HarmonyLib.Tools;
+using UnityEngine;
 
 namespace MedkitHotkey
 {
@@ -21,7 +22,7 @@ namespace MedkitHotkey
 
         private static void Patch_HandleInput_Postfix()
         {
-            if (!TextInputOpen && GameInput.GetKeyDown(ModPlugin.ConfigFirstAidKey.Value) && Player.main.GetCanItemBeUsed())
+            if (!TextInputOpen && Input.GetKeyDown(ModPlugin.ConfigFirstAidKey.Value) && Player.main.GetCanItemBeUsed())
             {
                 Inventory playerInventory = Inventory.main;
 
@@ -37,11 +38,6 @@ namespace MedkitHotkey
                     ErrorMessage.AddWarning("MissingMedkit".Translate());
                 }
             }
-        }
-
-        private static void Patch_SetCurrentLanguage_Postfix()
-        {
-            Translation.ReloadLanguage();
         }
 
         internal static void InitializeHarmony()
@@ -71,12 +67,6 @@ namespace MedkitHotkey
             harmony.Patch(
                 original: AccessTools.Method(typeof(uGUI_QuickSlots), "HandleInput"),
                 postfix: new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_HandleInput_Postfix)));
-
-            /* Reset language cache on game language change */
-            // Patch: Language.SetCurrentLanguage
-            harmony.Patch(
-                original: AccessTools.Method(typeof(Language), nameof(Language.SetCurrentLanguage)),
-                postfix: new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SetCurrentLanguage_Postfix)));
         }
     }
 }

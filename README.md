@@ -8,9 +8,10 @@ This mod adds a keybinding for First Aid Kits (default key: "H").
 
 ### **Installation:**
 
-1. Install [BepInEx for Subnautica](https://www.nexusmods.com/subnautica/mods/1108)
-2. Download the latest zip file from the [Files tab](https://www.nexusmods.com/subnautica/mods/190?tab=files)
-3. Unzip the contents of the zip to the game's main directory (where Subnautica.exe can be found)
+1. Install [BepInEx for Subnautica](https://www.nexusmods.com/subnautica/mods/1108)
+2. Install [Nautilus](https://www.nexusmods.com/subnautica/mods/1262)
+3. Download the latest zip file from the [Files tab](https://www.nexusmods.com/subnautica/mods/190?tab=files)
+4. Unzip the contents of the zip to the game's main directory (where Subnautica.exe can be found)
 
 ### **(Optional) Configuration:**
 
@@ -29,7 +30,7 @@ This mod adds a keybinding for First Aid Kits (default key: "H").
 
 ### **(Optional) Translation:**
 
-1. Navigate to *...\Subnautica\BepInEx\plugins\MedkitHotkey\Languages*
+1. Navigate to *...\Subnautica\BepInEx\plugins\MedkitHotkey\Localization*
 2. Copy *English.json* and change the file name to match your language
     > Valid language names are found in *...\Subnautica\Subnautica_Data\StreamingAssets\SNUnmanagedData\LanguageFiles*
 3. Translate the file. Do not touch the keys ("MissingMedkit"), only the values ("No first aid...")
@@ -38,15 +39,15 @@ This mod adds a keybinding for First Aid Kits (default key: "H").
 ### **FAQ:**
 
 - **Q. Does this mod support the latest Subnautica update?**
-- A. Tested on Subnautica version Dec-2022 71137 (Living Large update)
+- A. Tested on Subnautica version Jun-2025 82304 (Living Large update)
 - **Q. Is this mod safe to add or remove from an existing save?**
 - A. Yes
 - **Q. Does this mod have any known conflicts?**
 - A. It should not cause conflicts. Use a unique hotkey to avoid trouble
 
-[Source code can be found here.](https://github.com/DingoDjango/snMedkitHotkey)﻿
+[Source code can be found here.](https://github.com/DingoDjango/snMedkitHotkey)
 
 ### **Credits:**
 
-- Powered by [Harmony](https://github.com/pardeike/Harmony)
+- Powered by [Harmony](https://github.com/pardeike/Harmony)
 - Translations by [mstislavovich](https://forums.nexusmods.com/index.php?/user/23416669-mstislavovich/), [Yanuut](https://github.com/Yanuut)
