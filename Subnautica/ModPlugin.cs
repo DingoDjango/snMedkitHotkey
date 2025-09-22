@@ -12,9 +12,9 @@ namespace MedkitHotkey
     {
         private const string modGUID = "Dingo.SN.MedkitHotkey";
         internal const string modName = "Medkit Hotkey";
-        private const string modVersion = "2.2.0";
+        private const string modVersion = "2.2.1";
 
-     //   private ModOptions modSettings;
+        // private ModOptions modSettings;
 
 		public static ConfigEntry<KeyCode> ConfigFirstAidKey;
 
@@ -38,7 +38,7 @@ namespace MedkitHotkey
 
 			this.InitializeConfig();
 
-     //       this.modSettings = new ModSettings();
+            // this.modSettings = new ModSettings();
 
 			HarmonyPatches.InitializeHarmony();
         }

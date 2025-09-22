@@ -55,6 +55,10 @@
       <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\LitJson.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Nautilus">
+      <HintPath>..\..\..\..\SubnauticaBelowZero\BepInEx\plugins\Nautilus\Nautilus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -73,6 +77,14 @@
       <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\..\..\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
@@ -89,16 +101,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shared\Languages\English.json">
-      <Link>Languages\English.json</Link>
+    <None Include="..\Shared\Localization\English.json">
+      <Link>Localization\English.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Shared\Languages\French.json">
-      <Link>Languages\French.json</Link>
+    <None Include="..\Shared\Localization\French.json">
+      <Link>Localization\French.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Shared\Languages\Russian.json">
-      <Link>Languages\Russian.json</Link>
+    <None Include="..\Shared\Localization\Russian.json">
+      <Link>Localization\Russian.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
