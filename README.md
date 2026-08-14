@@ -3,7 +3,7 @@
 ### **Description:**
 
 This mod adds a keybinding for First Aid Kits (default key: "H").
-Rebind in **Menu → Options → Mods**
+Rebind ingame **Menu → Options → Mods / Mod Input**
 
 **For Below Zero instructions please view the [Nexus mod page](https://www.nexusmods.com/subnauticabelowzero/mods/360).**
 
