@@ -27,7 +27,7 @@ namespace MedkitHotkey
 #if BELOWZERO
             if (Input.GetKeyDown(ModPlugin.options.FirstAidKey))
 #else
-            if (GameInput.IsInitialized && GameInput.GetButtonDown(Keybinds.FirstAidKey))
+            if (GameInput.IsInitialized && GameInput.GetButtonDown(ModPlugin.Instance.keyBinds.FirstAidKey))
 #endif
             {
                 if (GetCanMedkitBeUsed()) // `Player.main.GetCanItemBeUsed` checked in HandleInput

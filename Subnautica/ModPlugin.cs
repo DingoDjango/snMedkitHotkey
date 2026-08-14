@@ -8,9 +8,11 @@ namespace MedkitHotkey
     [BepInDependency("com.snmodding.nautilus")]
     public class ModPlugin : ModPluginBase
     {
-        private const string modGUID = "Dingo.SN.MedkitHotkey";
-        internal const string modName = "Medkit Hotkey";
-        private const string modVersion = "3.0.8.3031";
+        public const string modGUID = "Dingo.SN.MedkitHotkey";
+        public const string modName = "Medkit Hotkey";
+        public const string modVersion = "3.0.8.3031";
+
+        internal Keybinds keyBinds;
 
         private void Awake()
         {
@@ -18,10 +20,10 @@ namespace MedkitHotkey
 
             LanguageHandler.RegisterLocalizationFolder();
 
+            keyBinds = new Keybinds();
+
             // SN version uses Keybinds with new system
             // options = OptionsPanelHandler.RegisterModOptions<ModOptions>();
-
-            Keybinds.Initialize();
 
             HarmonyPatches.InitializeHarmony();
         }
