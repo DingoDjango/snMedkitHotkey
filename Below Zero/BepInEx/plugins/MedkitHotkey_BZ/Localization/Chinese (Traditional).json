@@ -1,0 +1,5 @@
+{
+  "FirstAidKey": "急救包快速鍵",
+  "Tooltip_FirstAidKey": "用於從背包中啟用急救包的按鍵綁定（如果有的話）。",
+  "MissingMedkit": "背包中沒有急救包"
+}

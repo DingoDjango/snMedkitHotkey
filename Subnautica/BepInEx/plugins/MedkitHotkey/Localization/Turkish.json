@@ -1,0 +1,5 @@
+{
+  "FirstAidKey": "İlk yardım çantası tuşu",
+  "Tooltip_FirstAidKey": "Varsa envanterden bir ilk yardım çantasını etkinleştirmek için kullanılan tuş bağlantısı.",
+  "MissingMedkit": "Envanterde ilk yardım çantası yok"
+}

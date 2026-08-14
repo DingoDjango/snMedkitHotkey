@@ -1,0 +1,5 @@
+{
+  "FirstAidKey": "Första hjälpen kit-tangent",
+  "Tooltip_FirstAidKey": "Tangentbindning som används för att aktivera ett första hjälpen kit från inventariet, om ett finns tillgängligt.",
+  "MissingMedkit": "Inget första hjälpen kit i inventariet"
+}

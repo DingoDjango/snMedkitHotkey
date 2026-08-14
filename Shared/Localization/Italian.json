@@ -1,0 +1,5 @@
+{
+  "FirstAidKey": "Tasto del kit di pronto soccorso",
+  "Tooltip_FirstAidKey": "Tasto utilizzato per attivare un kit di pronto soccorso dall'inventario, se disponibile.",
+  "MissingMedkit": "Nessun kit di pronto soccorso nell'inventario"
+}

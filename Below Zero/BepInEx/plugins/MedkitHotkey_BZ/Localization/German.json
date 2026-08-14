@@ -1,0 +1,5 @@
+{
+  "FirstAidKey": "MediKit-Taste",
+  "Tooltip_FirstAidKey": "Tastenbelegung zum Aktivieren eines MediKits aus dem Inventar, falls eines verfügbar ist.",
+  "MissingMedkit": "Kein MediKit im Inventar"
+}

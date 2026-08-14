@@ -1,0 +1,5 @@
+{
+  "FirstAidKey": "Tecla do kit de primeiros socorros",
+  "Tooltip_FirstAidKey": "Tecla usada para ativar um kit de primeiros socorros do inventário, se houver um disponível.",
+  "MissingMedkit": "Nenhum kit de primeiros socorros no inventário"
+}

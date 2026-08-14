@@ -1,3 +1,5 @@
 ﻿{
+  "FirstAidKey": "Raccourci clavier du kit de soin",
+  "Tooltip_FirstAidKey": "Raccourci clavier utilisé pour activer un kit de soin depuis l'inventaire, si disponible.",
   "MissingMedkit": "Aucun kit de soin dans l'inventaire"
 }
