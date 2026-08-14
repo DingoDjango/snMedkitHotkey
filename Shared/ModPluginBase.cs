@@ -6,7 +6,9 @@ namespace MedkitHotkey
     {
         public static ModPlugin Instance;
 
+#if BELOWZERO
         public static ModOptions options;
+#endif
 
         public abstract void LogMessage(string message);
 

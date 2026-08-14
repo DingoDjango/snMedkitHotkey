@@ -25,27 +25,25 @@ namespace MedkitHotkey
         private static void Patch_HandleInput_Postfix()
         {
 #if BELOWZERO
-
+            if (Input.GetKeyDown(ModPlugin.options.FirstAidKey))
 #else
-            if (!GameInput.IsInitialized)
-            {
-                return;
-            }
+            if (GameInput.IsInitialized && GameInput.GetButtonDown(Keybinds.FirstAidKey))
 #endif
-
-            if (GameInput.GetButtonDown(Keybinds.FirstAidKey) && Player.main.GetCanItemBeUsed() && GetCanMedkitBeUsed())
             {
-                Inventory playerInventory = Inventory.main;
-
-                IList<InventoryItem> medkits = playerInventory?.container.GetItems(TechType.FirstAidKit);
-
-                if (medkits != null)
+                if (GetCanMedkitBeUsed()) // `Player.main.GetCanItemBeUsed` checked in HandleInput
                 {
-                    playerInventory.ExecuteItemAction(ItemAction.Use, medkits.First());
-                }
-                else
-                {
-                    ErrorMessage.AddWarning("MissingMedkit".Translate());
+                    Inventory playerInventory = Inventory.main;
+
+                    IList<InventoryItem> medkits = playerInventory?.container.GetItems(TechType.FirstAidKit);
+
+                    if (medkits != null)
+                    {
+                        playerInventory.ExecuteItemAction(ItemAction.Use, medkits.First());
+                    }
+                    else
+                    {
+                        ErrorMessage.AddWarning("MissingMedkit".Translate());
+                    }
                 }
             }
         }

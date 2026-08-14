@@ -1,11 +1,10 @@
 using Nautilus.Handlers;
-using UnityEngine;
 
 namespace MedkitHotkey
 {
     internal static class Keybinds
     {
-        internal static GameInput.Button FirstAidKey { get; private set; }
+        internal static GameInput.Button FirstAidKey;
 
         internal static void Initialize()
         {

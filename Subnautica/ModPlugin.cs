@@ -18,7 +18,8 @@ namespace MedkitHotkey
 
             LanguageHandler.RegisterLocalizationFolder();
 
-            options = OptionsPanelHandler.RegisterModOptions<ModOptions>();
+            // SN version uses Keybinds with new system
+            // options = OptionsPanelHandler.RegisterModOptions<ModOptions>();
 
             Keybinds.Initialize();
 

@@ -100,9 +100,6 @@
     <Compile Include="..\Shared\ModPluginBase.cs">
       <Link>ModPluginBase.cs</Link>
     </Compile>
-    <Compile Include="..\Shared\ModOptions.cs">
-      <Link>ModOptions.cs</Link>
-    </Compile>
     <Compile Include="..\Shared\Keybinds.cs">
       <Link>Keybinds.cs</Link>
     </Compile>
@@ -132,7 +129,7 @@ SET ZIPFILE=..\ZIP\Subnautica\$(ProjectName).zip
 
 if exist "%25MODDIR%25plugins\MedkitHotkey" rmdir /s /q "%25MODDIR%25plugins\MedkitHotkey"
 
-xcopy "$(ProjectDir)BepInEx\plugins\MedkitHotkey\*" "%25MODDIR%25plugins\MedkitHotkey\" /i /e /r /y /q >nul
+xcopy "$(ProjectDir)BepInEx\plugins\MedkitHotkey\*" "%25MODDIR%25plugins\MedkitHotkey\" /i /e /r /y /q &gt;nul
 
 if "$(Configuration)" == "Debug" (
     if exist "%25ZIPFILE%25" del /f /q "%25ZIPFILE%25"

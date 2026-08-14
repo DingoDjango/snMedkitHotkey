@@ -118,7 +118,7 @@ SET ZIPFILE=..\ZIP\BelowZero\$(ProjectName).zip
 
 if exist "%25MODDIR%25plugins\MedkitHotkey_BZ" rmdir /s /q "%25MODDIR%25plugins\MedkitHotkey_BZ"
 
-xcopy "$(ProjectDir)BepInEx\plugins\MedkitHotkey_BZ\*" "%25MODDIR%25plugins\MedkitHotkey_BZ\" /i /e /r /y /q >nul
+xcopy "$(ProjectDir)BepInEx\plugins\MedkitHotkey_BZ\*" "%25MODDIR%25plugins\MedkitHotkey_BZ\" /i /e /r /y /q &gt;nul
 
 if "$(Configuration)" == "Debug" (
     if exist "%25ZIPFILE%25" del /f /q "%25ZIPFILE%25"
