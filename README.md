@@ -3,6 +3,7 @@
 ### **Description:**
 
 This mod adds a keybinding for First Aid Kits (default key: "H").
+Rebind in **Menu → Options → Mods**
 
 **For Below Zero instructions please view the [Nexus mod page](https://www.nexusmods.com/subnauticabelowzero/mods/360).**
 
@@ -12,21 +13,6 @@ This mod adds a keybinding for First Aid Kits (default key: "H").
 2. Install [Nautilus](https://www.nexusmods.com/subnautica/mods/1262)
 3. Download the latest zip file from the [Files tab](https://www.nexusmods.com/subnautica/mods/190?tab=files)
 4. Unzip the contents of the zip to the game's main directory (where Subnautica.exe can be found)
-
-### **(Optional) Configuration:**
-
-#### Recommended - Using Configuration Manager
-
-1. Install the [Configuration Manager](https://www.nexusmods.com/subnautica/mods/1112) mod
-2. Launch Subnautica and open the Configuration Manager (default key: F5)
-3. Rebind the key in this mod's section
-
-#### Manual Configuration
-
-1. Launch the game at least once after installing the mod
-2. Open *...\Subnautica\BepInEx\config\Dingo.SN.MedkitHotkey.cfg* with a text editor
-3. Replace "H" with your preferred key
-    > Only use KeyCode names found on [this page](https://docs.unity3d.com/ScriptReference/KeyCode.html)
 
 ### **(Optional) Translation:**
 
@@ -39,11 +25,11 @@ This mod adds a keybinding for First Aid Kits (default key: "H").
 ### **FAQ:**
 
 - **Q. Does this mod support the latest Subnautica update?**
-- A. Tested on Subnautica version Jun-2025 82304 (Living Large update)
+- A. Tested on August 2026 for Subnautica vesion 83031
 - **Q. Is this mod safe to add or remove from an existing save?**
 - A. Yes
 - **Q. Does this mod have any known conflicts?**
-- A. It should not cause conflicts. Use a unique hotkey to avoid trouble
+- A. No. Use a unique hotkey to avoid conflicts
 
 [Source code can be found here.](https://github.com/DingoDjango/snMedkitHotkey)
 
