@@ -1,3 +1,5 @@
 ﻿{
+  "FirstAidKey": "First Aid Kit Hotkey",
+  "Tooltip_FirstAidKey": "Keybinding used to activate a First Aid Kit from inventory, if one is available.",
   "MissingMedkit": "No first aid kit in inventory"
 }
