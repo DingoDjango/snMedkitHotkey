@@ -18,7 +18,7 @@
     <DebugType>embedded</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>BepInEx\plugins\MedkitHotkey_BZ\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;BELOWZERO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -29,8 +29,7 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>BepInEx\plugins\MedkitHotkey_BZ\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>BELOWZERO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -65,10 +64,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -91,6 +86,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\ModPluginBase.cs">
+      <Link>ModPluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\ModOptions.cs">
+      <Link>ModOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Shared\HarmonyPatches.cs">
       <Link>HarmonyPatches.cs</Link>
     </Compile>
@@ -101,30 +102,29 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shared\Localization\English.json">
-      <Link>Localization\English.json</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Shared\Localization\French.json">
-      <Link>Localization\French.json</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Shared\Localization\Russian.json">
-      <Link>Localization\Russian.json</Link>
+    <None Include="..\Shared\Localization\*.*">
+      <Link>Localization\%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-	Other similar extension points exist, see Microsoft.Common.targets.
-	<Target Name="BeforeBuild">
-	</Target> -->
+  <Target Name="CleanPluginOutput" BeforeTargets="BeforeBuild" Condition="Exists('$(ProjectDir)BepInEx\plugins\MedkitHotkey_BZ')">
+    <RemoveDir Directories="$(ProjectDir)BepInEx\plugins\MedkitHotkey_BZ" ContinueOnError="true" />
+  </Target>
   <PropertyGroup>
-    <PostBuildEvent>SET MODDIR=C:\Games\Below Zero\BepInEx\
-SET ZIPFILE=D:\Downloads\$(ProjectName).zip
+    <PostBuildEvent>cd /d "$(ProjectDir)"
+SET MODDIR=C:\Games\Below Zero\BepInEx\
+SET ZIPFILE=..\ZIP\BelowZero\$(ProjectName).zip
 
-xcopy "$(ProjectDir)BepInEx\*" "%25MODDIR%25" /i /e /r /y
+if exist "%25MODDIR%25plugins\MedkitHotkey_BZ" rmdir /s /q "%25MODDIR%25plugins\MedkitHotkey_BZ"
 
-7z a -mx9 "%25ZIPFILE%25" "$(ProjectDir)BepInEx"</PostBuildEvent>
+xcopy "$(ProjectDir)BepInEx\plugins\MedkitHotkey_BZ\*" "%25MODDIR%25plugins\MedkitHotkey_BZ\" /i /e /r /y /q >nul
+
+if "$(Configuration)" == "Debug" (
+    if exist "%25ZIPFILE%25" del /f /q "%25ZIPFILE%25"
+) else (
+    if not exist "..\ZIP\BelowZero" mkdir "..\ZIP\BelowZero"
+    "C:\Program Files\7-Zip\7z.exe" a -mx9 -bso0 -bse2 -bsp0 "%25ZIPFILE%25" "BepInEx\plugins\MedkitHotkey_BZ"
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>
