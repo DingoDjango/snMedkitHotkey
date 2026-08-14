@@ -20,7 +20,8 @@ namespace MedkitHotkey
 
             options = OptionsPanelHandler.RegisterModOptions<ModOptions>();
 
-            Keybinds.Initialize();
+            // BZ uses old keybinding system, handles in options
+            // Keybinds.Initialize();
 
             HarmonyPatches.InitializeHarmony();
         }
