@@ -1,46 +1,43 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using Nautilus.Handlers;
-using Nautilus.Options;
 using UnityEngine;
 
 namespace MedkitHotkey
 {
     [BepInPlugin(modGUID, modName, modVersion)]
-	[BepInDependency("com.snmodding.nautilus")]
-	public class ModPlugin : BaseUnityPlugin
+    [BepInDependency("com.snmodding.nautilus")]
+    public class ModPlugin : ModPluginBase
     {
         private const string modGUID = "Dingo.SN.MedkitHotkey";
         internal const string modName = "Medkit Hotkey";
-        private const string modVersion = "2.2.1";
-
-        // private ModOptions modSettings;
-
-		public static ConfigEntry<KeyCode> ConfigFirstAidKey;
-
-		private void InitializeConfig()
-        {
-            ConfigFirstAidKey = this.Config.Bind(
-                section: "General",
-                key: "First Aid Kit Hotkey",
-                defaultValue: KeyCode.H,
-                description: "Keybinding used to activate a First Aid Kit from inventory, if one is available.");
-        }
-
-        internal static void LogMessage(string message)
-        {
-            Debug.Log($"{modName} :: " + message);
-        }
+        private const string modVersion = "3.0.8.3031";
 
         private void Awake()
         {
+            Instance = this;
+
             LanguageHandler.RegisterLocalizationFolder();
 
-			this.InitializeConfig();
+            options = OptionsPanelHandler.RegisterModOptions<ModOptions>();
 
-            // this.modSettings = new ModSettings();
+            Keybinds.Initialize();
 
-			HarmonyPatches.InitializeHarmony();
+            HarmonyPatches.InitializeHarmony();
+        }
+
+        public override void LogMessage(string message)
+        {
+            Debug.Log($"{modName} :: {message}");
+        }
+
+        public override void LogWarning(string warning)
+        {
+            Debug.LogWarning($"{modName} :: {warning}");
+        }
+
+        public override void LogError(string error)
+        {
+            Debug.LogError($"{modName} :: {error}");
         }
     }
 }

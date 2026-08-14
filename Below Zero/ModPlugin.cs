@@ -1,5 +1,4 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using Nautilus.Handlers;
 using UnityEngine;
 
@@ -7,37 +6,38 @@ namespace MedkitHotkey
 {
     [BepInPlugin(modGUID, modName, modVersion)]
 	[BepInDependency("com.snmodding.nautilus")]
-	public class ModPlugin : BaseUnityPlugin
+	public class ModPlugin : ModPluginBase
     {
         private const string modGUID = "Dingo.SNBZ.MedkitHotkey";
         internal const string modName = "Medkit Hotkey BZ";
-        private const string modVersion = "2.2.1";
+        private const string modVersion = "3.0.8.3031";
 
-        public static ConfigEntry<KeyCode> ConfigFirstAidKey;
-
-		private void InitializeConfig()
+        private void Awake()
         {
-            ConfigFirstAidKey = this.Config.Bind(
-                section: "General",
-                key: "First Aid Kit Hotkey",
-                defaultValue: KeyCode.H,
-                description: "Keybinding used to activate a First Aid Kit from inventory, if one is available.");
+            Instance = this;
+
+            LanguageHandler.RegisterLocalizationFolder();
+
+            options = OptionsPanelHandler.RegisterModOptions<ModOptions>();
+
+            Keybinds.Initialize();
+
+            HarmonyPatches.InitializeHarmony();
         }
 
-        internal static void LogMessage(string message)
+        public override void LogMessage(string message)
         {
-            Debug.Log($"{modName} :: " + message);
-		}
+            Debug.Log($"{modName} :: {message}");
+        }
 
-		private void Awake()
-		{
-			LanguageHandler.RegisterLocalizationFolder();
+        public override void LogWarning(string warning)
+        {
+            Debug.LogWarning($"{modName} :: {warning}");
+        }
 
-			this.InitializeConfig();
-
-			// this.modSettings = new ModSettings();
-
-			HarmonyPatches.InitializeHarmony();
-		}
-	}
+        public override void LogError(string error)
+        {
+            Debug.LogError($"{modName} :: {error}");
+        }
+    }
 }

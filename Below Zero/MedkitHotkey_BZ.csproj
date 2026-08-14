@@ -40,23 +40,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\SubnauticaBelowZero\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\BepInEx\core\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>D:\SubnauticaBelowZero\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\BepInEx\core\BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\LitJson.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\LitJson.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Nautilus">
-      <HintPath>..\..\..\..\SubnauticaBelowZero\BepInEx\plugins\Nautilus\Nautilus.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\BepInEx\plugins\Nautilus\Nautilus.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -66,27 +66,27 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\..\..\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.InputModule">
-      <HintPath>..\..\..\..\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\UnityEngine.InputModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\SubnauticaBelowZero\SubnauticaZero_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:\Games\Below Zero\SubnauticaZero_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -120,7 +120,7 @@
 	<Target Name="BeforeBuild">
 	</Target> -->
   <PropertyGroup>
-    <PostBuildEvent>SET MODDIR=D:\SubnauticaBelowZero\BepInEx\
+    <PostBuildEvent>SET MODDIR=C:\Games\Below Zero\BepInEx\
 SET ZIPFILE=D:\Downloads\$(ProjectName).zip
 
 xcopy "$(ProjectDir)BepInEx\*" "%25MODDIR%25" /i /e /r /y

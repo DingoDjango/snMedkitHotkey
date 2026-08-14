@@ -97,6 +97,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\ModPluginBase.cs">
+      <Link>ModPluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\ModOptions.cs">
+      <Link>ModOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\Keybinds.cs">
+      <Link>Keybinds.cs</Link>
+    </Compile>
     <Compile Include="..\Shared\HarmonyPatches.cs">
       <Link>HarmonyPatches.cs</Link>
     </Compile>
@@ -121,14 +130,6 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>SET MODDIR=C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\
-SET ZIPFILE=D:\Downloads\$(ProjectName).zip
-
-xcopy "$(ProjectDir)BepInEx\*" "%25MODDIR%25" /i /e /r /y
-
-7z a -mx9 "%25ZIPFILE%25" "$(ProjectDir)BepInEx"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
 	Other similar extension points exist, see Microsoft.Common.targets.
 	<Target Name="BeforeBuild">
