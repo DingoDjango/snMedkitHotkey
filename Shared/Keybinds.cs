@@ -10,7 +10,7 @@ namespace MedkitHotkey
                 .CreateInput("FirstAidKey".Translate(), "Tooltip_FirstAidKey".Translate())
                 .WithKeyboardBinding(MedkitHotkeyDefault)
                 .WithControllerBinding("None")
-                .AvoidConflicts(GameInput.Device.Keyboard)
+                .AvoidConflicts()
                 .WithCategory(ModPlugin.modName);
     }
 }
